@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="register">
+    <div class="title">Sign In</div>
+    <div class="label row">
+        <div>Login </div>
+        <div class="required">*</div>
+    </div>
+    <input
+      type="text"
+      placeholder="Type your login"
+      [(ngModel)]="username"
+      (ngModelChange)="validate()"
+    />
+    <div class="label row">
+        <div>Password </div>
+        <div class="required">*</div>
+    </div>
+    <input
+      type="password"
+      placeholder="Type your password"
+      [(ngModel)]="password"
+      (ngModelChange)="validate()"
+    />
+    <div class="container">
+      <button class="apply-button" [disabled]="!enabled">Apply</button>
+    </div>
+  </div>
+</div>
