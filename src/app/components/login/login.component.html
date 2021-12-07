@@ -22,7 +22,7 @@
       (ngModelChange)="validate()"
     />
     <div class="container">
-      <button class="apply-button" [disabled]="!enabled">Apply</button>
+      <button class="apply-button" [disabled]="!enabled" (click)="this.authenticate()">Apply</button>
     </div>
   </div>
 </div>
