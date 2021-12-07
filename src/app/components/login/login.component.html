@@ -2,8 +2,8 @@
   <div class="register">
     <div class="title">Sign In</div>
     <div class="label row">
-        <div>Login </div>
-        <div class="required">*</div>
+      <div>Login</div>
+      <div class="required">*</div>
     </div>
     <input
       type="text"
@@ -12,8 +12,8 @@
       (ngModelChange)="validate()"
     />
     <div class="label row">
-        <div>Password </div>
-        <div class="required">*</div>
+      <div>Password</div>
+      <div class="required">*</div>
     </div>
     <input
       type="password"
@@ -22,7 +22,13 @@
       (ngModelChange)="validate()"
     />
     <div class="container">
-      <button class="apply-button" [disabled]="!enabled" (click)="this.authenticate()">Apply</button>
+      <button
+        class="apply-button"
+        [disabled]="!enabled"
+        (click)="this.authenticate()"
+      >
+        Apply
+      </button>
     </div>
   </div>
 </div>
