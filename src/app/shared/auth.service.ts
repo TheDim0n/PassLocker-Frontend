@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 
+import { environment } from 'src/environments/environment';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -25,7 +27,7 @@ export class AuthService {
     };
     this.http
       .post(
-        'http://localhost:8000/users/token/',
+        environment.apiUrl+'/users/token/',
         `username=${username}&password=${password}`,
         options
       )
