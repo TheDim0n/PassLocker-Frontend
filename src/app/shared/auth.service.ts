@@ -40,4 +40,14 @@ export class AuthService {
         error: () => this.isAuthed.next(false),
       });
   }
+
+  public getAccessTokenHeader(): HttpHeaders {
+    return new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
+  }
+
+  public logout(): void {
+    this.username = '';
+    this.token = '';
+    this.isAuthed.next(false);
+  }
 }

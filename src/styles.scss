@@ -12,12 +12,12 @@ body {
 }
 
 html {
+  position: relative;
   display: flex;
   justify-content: center;
 }
 
 body {
-  position: relative;
   box-sizing: border-box;
   width: 100%;
   padding: 0 32px;
@@ -37,7 +37,7 @@ input {
   font-size: 14px;
 }
 
-input:focus {
+input:focus, textarea:focus {
   outline: none !important;
   border: 2px solid #66b3ff;
   box-shadow: 0px 0px 5px #66b3ff;
@@ -46,4 +46,52 @@ input:focus {
 input[type="password"]::-ms-reveal,
 input[type="password"]::-ms-clear {
   display: none !important;
+}
+
+.apply-button {
+  width: 130px;
+  height: 35px;
+  background: #43d362;
+  border: none;
+  box-shadow: 0px 2px 3px rgba(67, 211, 98, 0.8);
+  border-radius: 10px;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+
+  color: #ffffff;
+}
+
+.apply-button:hover {
+  background: #43d362d0;
+  cursor: pointer;
+}
+
+.apply-button[disabled] {
+  background: #777;
+  box-shadow: 0px 2px 3px rgba($color: #777, $alpha: 0.8);
+  cursor: not-allowed;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.required {
+  color: red;
+}
+
+.textarea {
+  min-height: 200px;
+  min-width: 400px;
+  max-width: 400px;
+  font-size: 14px;
+  padding: 10px 10px;
+  margin-bottom: 16px;
+  background: #ffffff;
+
+  border: 2px solid #e5e5e5;
+  border-radius: 10px;
 }
