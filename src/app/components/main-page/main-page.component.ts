@@ -22,8 +22,20 @@ export class MainPageComponent implements OnInit {
   ngOnInit(): void {
     this.user.isAuthed.subscribe((isAuthed: boolean | undefined) => {
       if (!isAuthed) this.router.navigate(['/']);
+
     });
+    this.secrets.isUpdated.subscribe((isUpdated: boolean | undefined) => {
+      if (isUpdated) {
+        this.secrets.loader.hide();
+        this.updateSecretsList();
+      }
+    });
+    this.secrets.loader.hide();
+  }
+
+  public updateSecretsList() {
     this.secrets.getSecrets().subscribe((secrets: Secret[]) => {
+      this.secrets.loader.hide();
       this.secretsList = secrets;
     });
   }

@@ -6,12 +6,15 @@
       src="/assets/images/copy.svg"
       width="25px"
       height="25px"
+      (click)="copySecret()"
     />
     <img
       class="icon"
       src="/assets/images/delete.svg"
       width="25px"
       height="25px"
+      (click)="removeCard()"
     />
   </div>
 </div>
+<app-remove-modal ></app-remove-modal>

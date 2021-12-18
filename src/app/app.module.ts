@@ -10,6 +10,8 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CardComponent } from './components/card/card.component';
 import { AddSecretComponent } from './components/add-secret/add-secret.component';
+import { LoadModalComponent } from './components/load-modal/load-modal.component';
+import { RemoveModalComponent } from './components/remove-modal/remove-modal.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { AddSecretComponent } from './components/add-secret/add-secret.component
     HeaderComponent,
     CardComponent,
     AddSecretComponent,
+    LoadModalComponent,
+    RemoveModalComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

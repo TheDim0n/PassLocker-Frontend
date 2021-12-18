@@ -63,6 +63,32 @@ input[type="password"]::-ms-clear {
   color: #ffffff;
 }
 
+.remove-button {
+  width: 130px;
+  height: 35px;
+  background: #A60F0F;
+  border: none;
+  box-shadow: 0px 2px 3px rgba(166, 15, 15, 0.8);
+  border-radius: 10px;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+
+  color: #ffffff;
+}
+
+.remove-button:hover {
+  background: #A60F0Fd0;
+  cursor: pointer;
+}
+
+.remove-button[disabled] {
+  background: #777;
+  box-shadow: 0px 2px 3px rgba($color: #777, $alpha: 0.8);
+  cursor: not-allowed;
+}
+
 .apply-button:hover {
   background: #43d362d0;
   cursor: pointer;
