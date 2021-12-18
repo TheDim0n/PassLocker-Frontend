@@ -21,6 +21,9 @@
       [(ngModel)]="password"
       (ngModelChange)="validate()"
     />
+    <div class="row">
+      <div class="warning-text" *ngIf="!isCorrect">*Wrong login or password</div>
+    </div>
     <div class="container">
       <button
         class="apply-button"

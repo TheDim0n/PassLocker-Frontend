@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   public enabled: boolean = false;
   public username: string = '';
   public password: string = '';
+  public isCorrect: boolean | undefined = true;
 
   constructor(
     public loader: LoaderService,
@@ -21,13 +22,16 @@ export class LoginComponent implements OnInit {
   ) {}
 
   public validate(): void {
+    this.isCorrect = true;
     this.enabled = this.username.length >= 4 && this.password.length >= 8;
   }
 
   ngOnInit(): void {
     this.user.isAuthed.subscribe((isAuthed: boolean | undefined) => {
+      this.isCorrect = isAuthed;
       if (isAuthed) this.router.navigate(['/main']);
     });
+    this.isCorrect = true;
   }
 
   public authenticate(): void {

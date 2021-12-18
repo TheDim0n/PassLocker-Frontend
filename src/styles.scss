@@ -121,3 +121,10 @@ input[type="password"]::-ms-clear {
   border: 2px solid #e5e5e5;
   border-radius: 10px;
 }
+
+.warning-text {
+  font-style: normal;
+  font-size: 16px;
+  color: #db3324;
+  padding-bottom: 16px
+}
