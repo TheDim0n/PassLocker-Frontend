@@ -8,27 +8,23 @@ import { SecretService } from 'src/app/shared/secret.service';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })
-export class CardComponent implements OnInit, OnDestroy {
+export class CardComponent implements OnInit {
   @Input() secret: Secret = { id: -1, name: '', secret: '' };
+  public copied: boolean = false;
 
-  constructor(
-    private secretService: SecretService,
-    private removeService: RemoveModalService
-  ) {}
+  constructor(private removeService: RemoveModalService) {}
 
   ngOnInit(): void {}
 
-  ngOnDestroy(): void {
-      this.removeService.hide();
-  }
-
   public copySecret() {
+    this.copied = true;
     navigator.clipboard.writeText(this.secret.secret);
+    setTimeout(() => {
+      this.copied = false;
+    }, 2000);
   }
 
   public removeCard() {
     this.removeService.remove(this.secret);
-    // this.secretService.removeSecret(this.secret.id);
   }
-
 }

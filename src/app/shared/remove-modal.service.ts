@@ -23,6 +23,5 @@ export class RemoveModalService {
   public remove(secret: Secret) {
     this.secret = secret;
     this.show();
-    // this.secrets.removeSecret(id);
   }
 }

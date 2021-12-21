@@ -1,13 +1,16 @@
 <div class="card">
   <div class="title">{{ secret.name }}</div>
   <div class="icons">
-    <img
-      class="icon"
-      src="/assets/images/copy.svg"
-      width="25px"
-      height="25px"
-      (click)="copySecret()"
-    />
+    <div class="copy">
+      <img
+        class="icon"
+        src="/assets/images/copy.svg"
+        width="23px"
+        height="23px"
+        (click)="copySecret()"
+      />
+      <div class="tooltip" *ngIf="copied">Copied</div>
+    </div>
     <img
       class="icon"
       src="/assets/images/delete.svg"
@@ -17,3 +20,4 @@
     />
   </div>
 </div>
+<app-remove-modal></app-remove-modal>
