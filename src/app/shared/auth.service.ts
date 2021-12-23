@@ -57,6 +57,7 @@ export class AuthService {
   public logout(): void {
     this.username = '';
     this.token = '';
+    this.cookie.delete("token");
     this.isAuthed.next(false);
   }
 }
