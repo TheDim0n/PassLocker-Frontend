@@ -29,5 +29,6 @@ export class RemoveModalComponent implements OnInit {
 
   public remove() {
     this.secrets.removeSecret(this.state.secret.id);
+    this.state.visible = false;
   }
 }

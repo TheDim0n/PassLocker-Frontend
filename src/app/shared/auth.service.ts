@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,8 +15,14 @@ export class AuthService {
   public token: string = '';
   public username: string = '';
 
-  constructor(private http: HttpClient) {
-    this.isAuthed.next(false);
+  constructor(private http: HttpClient, private cookie: CookieService) {
+    if (this.cookie.check("token")) {
+      this.token = this.cookie.get("token");
+      this.username = this.cookie.get("username");
+      this.isAuthed.next(true);
+    } else {
+      this.isAuthed.next(false);
+    }
   }
 
   public get_token(username: string, password: string): void {
@@ -35,6 +42,8 @@ export class AuthService {
         next: (data: any) => {
           this.token = data['access_token'];
           this.username = username;
+          this.cookie.set("token", this.token);
+          this.cookie.set("username", this.username);
           this.isAuthed.next(true);
         },
         error: () => this.isAuthed.next(false),
