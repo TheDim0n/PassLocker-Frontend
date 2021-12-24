@@ -26,6 +26,5 @@ export class AddSecretComponent implements OnInit {
   public createSecret() {
     this.secretService.createSecret(this.secret);
     this.secret = { name: '', secret: '' };
-    this.secretService.isUpdated.next(true);
   }
 }

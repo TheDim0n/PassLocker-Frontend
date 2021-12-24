@@ -16,13 +16,11 @@ export class HeaderComponent implements OnInit {
   public username: string = '';
 
   constructor(
-    private user: AuthService,
+    public user: AuthService,
     public addSecretModalService: CloseModalService
   ) {}
 
-  ngOnInit(): void {
-    this.username = this.user.username;
-  }
+  ngOnInit(): void {}
 
   public toggle(): void {
     this.isExpanded = !this.isExpanded;

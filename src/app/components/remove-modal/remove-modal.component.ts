@@ -9,26 +9,26 @@ import { SecretService } from 'src/app/shared/secret.service';
   styleUrls: ['./remove-modal.component.scss'],
 })
 export class RemoveModalComponent implements OnInit {
-  public username: string = '';
   public enabled: boolean = false;
-  @Input() secretStr: string = '';
+  public secretStr: string = '';
 
   constructor(
     public state: RemoveModalService,
-    private secrets: SecretService
+    private secrets: SecretService,
+    public user: AuthService,
   ) {}
 
   ngOnInit(): void {
-    this.username = this.secrets.user.username;
   }
 
   public validate() {
     this.enabled =
-      this.secretStr === this.username + '/' + this.state.secret.name;
+      this.secretStr === this.user.username + '/' + this.state.secret.name;
   }
 
   public remove() {
     this.secrets.removeSecret(this.state.secret.id);
     this.state.visible = false;
+    this.secretStr = '';
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Secret } from 'src/app/interfaces/Secret';
 import { AuthService } from 'src/app/shared/auth.service';
+import { LoaderService } from 'src/app/shared/loader.service';
 import { SecretService } from 'src/app/shared/secret.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class MainPageComponent implements OnInit {
   public secretsList: Secret[] = [];
 
   constructor(
+    private loader: LoaderService,
     private router: Router,
     private user: AuthService,
     private secrets: SecretService,
@@ -22,23 +24,26 @@ export class MainPageComponent implements OnInit {
   ngOnInit(): void {
     this.user.isAuthed.subscribe((isAuthed: boolean | undefined) => {
       if (!isAuthed) this.router.navigate(['/']);
-
     });
     this.secrets.isUpdated.subscribe((isUpdated: boolean | undefined) => {
       if (isUpdated) {
-        this.secrets.loader.hide();
         this.updateSecretsList();
       }
     });
-    this.secrets.loader.hide();
   }
 
   public updateSecretsList() {
-    this.secrets.getSecrets().subscribe((secrets: Secret[]) => {
-      this.secrets.loader.hide();
-      this.secretsList = secrets;
-    }, () => {
-      this.user.isAuthed.next(false);
+    this.loader.show();
+    this.secrets.getSecrets().subscribe({
+      next: (secrets: Secret[]) => {
+        this.secretsList = secrets;
+      },
+      error: () => {
+        this.user.logout();
+      },
+      complete: () => {
+        this.loader.hide();
+      }
     });
   }
 }

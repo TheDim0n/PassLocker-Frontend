@@ -14,7 +14,6 @@ export class SecretService {
     boolean | undefined
   >(undefined);
   constructor(
-    public loader: LoaderService,
     private http: HttpClient,
     public user: AuthService,
   ) {
@@ -22,7 +21,6 @@ export class SecretService {
   }
 
   public getSecrets(): Observable<Secret[]> {
-    this.loader.show();
     return this.http.get<Secret[]>(environment.apiUrl + '/secrets/', {
       headers: this.user.getAccessTokenHeader(),
     });
@@ -42,7 +40,7 @@ export class SecretService {
   }
 
   public removeSecret(id: number) {
-    this.http.delete(environment.apiUrl+'/secrets/'+id, {
+    this.http.delete(`${environment.apiUrl}/secrets/${id}/`, {
       headers: this.user.getAccessTokenHeader(),
     }).subscribe({
       next: () => {

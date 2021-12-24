@@ -12,7 +12,6 @@ body {
 }
 
 html {
-  position: relative;
   display: flex;
   justify-content: center;
 }
@@ -25,6 +24,7 @@ body {
 }
 
 input {
+  font-family: "Red Hat Text";
   box-sizing: border-box;
   width: 100%;
   height: 35px;
@@ -110,6 +110,7 @@ input[type="password"]::-ms-clear {
 }
 
 .textarea {
+  font-family: "Red Hat Text";
   min-height: 100px;
   min-width: 400px;
   max-width: 400px;

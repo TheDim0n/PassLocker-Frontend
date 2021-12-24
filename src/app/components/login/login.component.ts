@@ -21,17 +21,17 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {}
 
-  public validate(): void {
-    this.isCorrect = true;
-    this.enabled = this.username.length >= 4 && this.password.length >= 8;
-  }
-
   ngOnInit(): void {
     this.user.isAuthed.subscribe((isAuthed: boolean | undefined) => {
       this.isCorrect = isAuthed;
       if (isAuthed) this.router.navigate(['/main']);
     });
     this.isCorrect = true;
+  }
+
+  public validate(): void {
+    this.isCorrect = true;
+    this.enabled = this.username.length >= 4 && this.password.length >= 8;
   }
 
   public authenticate(): void {

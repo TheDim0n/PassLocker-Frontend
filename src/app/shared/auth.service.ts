@@ -46,7 +46,7 @@ export class AuthService {
           this.cookie.set("username", this.username);
           this.isAuthed.next(true);
         },
-        error: () => this.isAuthed.next(false),
+        error: () => this.logout(),
       });
   }
 
@@ -57,7 +57,12 @@ export class AuthService {
   public logout(): void {
     this.username = '';
     this.token = '';
-    this.cookie.delete("token");
+    if (this.cookie.check("token")) {
+      this.cookie.delete("token");
+    }
+    if (this.cookie.check("username")) {
+      this.cookie.delete("username");
+    }
     this.isAuthed.next(false);
   }
 }
