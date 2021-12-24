@@ -37,9 +37,11 @@ export class MainPageComponent implements OnInit {
     this.secrets.getSecrets().subscribe({
       next: (secrets: Secret[]) => {
         this.secretsList = secrets;
+        this.loader.hide();
       },
       error: () => {
         this.user.logout();
+        this.loader.hide();
       },
       complete: () => {
         this.loader.hide();
