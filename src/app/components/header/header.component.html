@@ -1,0 +1,15 @@
+<div class="header">
+  <div class="container">
+    <div class="title">PassLocker</div>
+    <div class="account">
+      <div class="username">{{ user.username }}</div>
+      <div class="menu">
+        <img class="arrow" src="/assets/images/Menu.svg" (click)="toggle()" />
+        <div class="dropdown" [style.display]="isExpanded ? 'flex' : 'none'">
+          <div class="section" (click)="showAddModal()">Add secret</div>
+          <div class="section" (click)="logout()" routerLink="/">Logout</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
