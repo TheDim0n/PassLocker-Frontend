@@ -11,20 +11,40 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
+
+import { UserOutline, LockOutline } from '@ant-design/icons-angular/icons';
+
+
+
+import { LoginComponent } from './components/login/login.component';
+
 registerLocaleData(ru);
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NzButtonModule,
+    NzPageHeaderModule,
+    NzFormModule,
+    NzInputModule,
+    NzTypographyModule,
+    NzIconModule.forRoot([
+      UserOutline,
+      LockOutline
+    ]),
   ],
   providers: [{ provide: NZ_I18N, useValue: ru_RU }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

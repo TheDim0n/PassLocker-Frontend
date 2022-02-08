@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~ng-zorro-antd/ng-zorro-antd.css";
+
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+html {
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1280px;
+}
